@@ -1,5 +1,8 @@
+"use client"
+
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import { motion, Variants } from "framer-motion"
 
 export type Project = {
   title: string
@@ -40,10 +43,22 @@ export const projects: Project[] = [
   },
 ]
 
+// Function to generate left/right variants based on index
+const getCardVariants = (index: number): Variants => ({
+  hidden: { opacity: 0, x: index % 2 === 0 ? -50 : 50, y: 0 },
+  show: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" as const },
+  },
+})
+
 export default function ProjectsGrid({ limit }: { limit?: number }) {
   const list = typeof limit === "number" ? projects.slice(0, limit) : projects
+
   return (
-    <section className="mx-auto max-w-6xl px-4 py-14">
+    <section className="mx-auto container px-4 py-14">
       <div className="flex items-end justify-between mb-6">
         <div>
           <h2 className="text-2xl font-semibold">Selected Projects</h2>
@@ -53,10 +68,23 @@ export default function ProjectsGrid({ limit }: { limit?: number }) {
           View all
         </Link>
       </div>
+
       <div className="grid gap-5 md:grid-cols-2">
-        {list.map((p) => (
-          <article key={p.title} className="rounded-xl overflow-hidden border border-border bg-card">
-            <img src={p.image || "/placeholder.svg"} alt={`${p.title} preview`} className="w-full h-48 object-cover" />
+        {list.map((p, index) => (
+          <motion.article
+            key={p.title}
+            className="rounded-xl overflow-hidden border border-border bg-card shadow-sm hover:shadow-md transition-all"
+            variants={getCardVariants(index)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ delay: index * 0.15 }}
+          >
+            <img
+              src={p.image || "/placeholder.svg"}
+              alt={`${p.title} preview`}
+              className="w-full h-48 object-cover"
+            />
             <div className="p-5">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-muted-foreground">{p.category}</span>
@@ -71,7 +99,7 @@ export default function ProjectsGrid({ limit }: { limit?: number }) {
                 ))}
               </div>
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
     </section>

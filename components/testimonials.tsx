@@ -1,4 +1,7 @@
+"use client"
+
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { motion, Variants } from "framer-motion"
 
 const testimonials = [
   {
@@ -18,25 +21,44 @@ const testimonials = [
   },
 ]
 
+// Card animation
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
+}
+
 export default function Testimonials() {
   return (
-    <section className="mx-auto max-w-6xl px-4 py-14">
+    <section className="mx-auto container px-4 py-14">
       <h2 className="text-2xl font-semibold mb-6">What clients say</h2>
       <div className="grid gap-5 md:grid-cols-3">
-        {testimonials.map((t) => (
-          <Card key={t.name} className="bg-card border-border">
-            <CardHeader>
-              <p className="text-sm text-muted-foreground">{t.role}</p>
-              <h3 className="font-medium">{t.name}</h3>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm">
-                {"“"}
-                {t.quote}
-                {"”"}
-              </p>
-            </CardContent>
-          </Card>
+        {testimonials.map((t, index) => (
+          <motion.div
+            key={t.name}
+            variants={cardVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ delay: index * 0.15 }}
+          >
+            <Card className="bg-card border-border">
+              <CardHeader>
+                <p className="text-sm text-muted-foreground">{t.role}</p>
+                <h3 className="font-medium">{t.name}</h3>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm">
+                  {"“"}
+                  {t.quote}
+                  {"”"}
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
         ))}
       </div>
     </section>

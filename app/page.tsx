@@ -38,7 +38,7 @@ export default function HomePage() {
       {/* Testimonials */}
       <Testimonials />
       {/* CTA */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
+      <section className="mx-auto container px-4 py-16">
         <div className="rounded-xl glow-card border border-border bg-primary text-primary-foreground p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
             <h2 className="text-2xl font-semibold text-balance">Have an idea? Let’s make it real.</h2>

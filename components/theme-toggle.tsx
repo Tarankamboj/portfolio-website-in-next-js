@@ -3,6 +3,7 @@
 import * as React from "react"
 import { Button } from "@/components/ui/button"
 
+
 export default function ThemeToggle() {
   const [theme, setTheme] = React.useState<"dark" | "light">("dark")
 
@@ -25,10 +26,14 @@ export default function ThemeToggle() {
     try {
       localStorage.setItem("theme", next)
       const root = document.documentElement
+      const logo = document.getElementById("change_logo") as HTMLImageElement | null;
+      
       if (next === "dark") {
         root.classList.add("dark")
+logo!.src  = "/images/Logo.png";
       } else {
         root.classList.remove("dark")
+          logo!.src = "/images/Logo_dark.png";
       }
     } catch {}
   }, [theme])

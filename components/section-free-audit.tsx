@@ -1,8 +1,8 @@
 "use client"
 
-import type React from "react"
 import { useState } from "react"
 import Link from "next/link"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -19,6 +19,7 @@ export default function FreeAuditSection() {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
+
     try {
       const message = [
         "Free Audit Request",
@@ -49,10 +50,18 @@ export default function FreeAuditSection() {
   }
 
   return (
-    <section aria-labelledby="free-audit-heading" className="relative py-12 md:py-20">
+    <section aria-labelledby="free-audit-heading" className="relative py-12 md:py-20 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid gap-8 md:grid-cols-2 md:gap-10 items-stretch">
-          <div className="flex flex-col justify-center gap-6">
+
+          {/* Left text section */}
+          <motion.div
+            className="flex flex-col justify-center gap-6"
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
             <p className="text-xs uppercase tracking-wider text-muted-foreground">Limited-time offer</p>
             <h2 id="free-audit-heading" className="text-pretty text-3xl md:text-4xl font-semibold leading-tight">
               Free Website Audit & Consultation
@@ -75,83 +84,49 @@ export default function FreeAuditSection() {
                 <span>Totally free—no obligations</span>
               </li>
             </ul>
-
             <div className="flex flex-wrap gap-3 pt-2">
               <Link href="/contact?subject=Free%20Website%20Audit">
-                <Button size="lg" className="rounded-full">
-                  Get Free Audit
-                </Button>
+                <Button size="lg" className="rounded-full">Get Free Audit</Button>
               </Link>
               <Link href="#process">
-                <Button variant="outline" size="lg" className="rounded-full bg-transparent">
-                  How it works
-                </Button>
+                <Button variant="outline" size="lg" className="rounded-full bg-transparent">How it works</Button>
               </Link>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="bg-card/60 supports-[backdrop-filter]:bg-card/60 backdrop-blur border border-border rounded-xl p-5 md:p-6 shadow-lg">
+          {/* Right form section */}
+          <motion.div
+            className="bg-card/60 supports-[backdrop-filter]:bg-card/60 backdrop-blur border border-border rounded-xl p-5 md:p-6 shadow-lg"
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
             <form onSubmit={onSubmit} className="grid gap-4" aria-label="Free audit request form">
               <div className="grid gap-2">
-                <label htmlFor="audit-name" className="text-sm">
-                  Your name
-                </label>
-                <Input
-                  id="audit-name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="Alex Smith"
-                  autoComplete="name"
-                />
+                <label htmlFor="audit-name" className="text-sm">Your name</label>
+                <Input id="audit-name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Alex Smith" />
               </div>
               <div className="grid gap-2">
-                <label htmlFor="audit-email" className="text-sm">
-                  Work email
-                </label>
-                <Input
-                  id="audit-email"
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="alex@company.com"
-                  autoComplete="email"
-                />
+                <label htmlFor="audit-email" className="text-sm">Work email</label>
+                <Input id="audit-email" type="email" required value={email} onChange={(e) => setEmail(e.target.value)} placeholder="alex@company.com" />
               </div>
               <div className="grid gap-2">
-                <label htmlFor="audit-website" className="text-sm">
-                  Website URL
-                </label>
-                <Input
-                  id="audit-website"
-                  type="url"
-                  required
-                  value={website}
-                  onChange={(e) => setWebsite(e.target.value)}
-                  placeholder="https://example.com"
-                  autoComplete="url"
-                />
+                <label htmlFor="audit-website" className="text-sm">Website URL</label>
+                <Input id="audit-website" type="url" required value={website} onChange={(e) => setWebsite(e.target.value)} placeholder="https://example.com" />
               </div>
               <div className="grid gap-2">
-                <label htmlFor="audit-goals" className="text-sm">
-                  Goals or pain points
-                </label>
-                <Textarea
-                  id="audit-goals"
-                  value={goals}
-                  onChange={(e) => setGoals(e.target.value)}
-                  placeholder="Increase conversions, improve speed, modernize design..."
-                  rows={4}
-                />
+                <label htmlFor="audit-goals" className="text-sm">Goals or pain points</label>
+                <Textarea id="audit-goals" value={goals} onChange={(e) => setGoals(e.target.value)} placeholder="Increase conversions, improve speed, modernize design..." rows={4} />
               </div>
-              <Button type="submit" size="lg" className="mt-2 rounded-full" disabled={loading} aria-busy={loading}>
+              <Button type="submit" size="lg" className="mt-2 rounded-full" disabled={loading}>
                 {loading ? "Sending…" : "Request Free Audit"}
               </Button>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-muted-foreground mt-1">
                 By submitting, you agree to be contacted about your request. No spam—ever.
               </p>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
