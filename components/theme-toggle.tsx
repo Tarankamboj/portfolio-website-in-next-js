@@ -1,51 +1,29 @@
 "use client"
 
-import * as React from "react"
 import { Button } from "@/components/ui/button"
-
+import { useTheme } from "next-themes"
+import { useEffect, useState } from "react"
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = React.useState<"dark" | "light">("dark")
+  const { theme, setTheme, systemTheme } = useTheme()
+  const [mounted, setMounted] = useState(false)
 
-  React.useEffect(() => {
-    try {
-      const stored = (localStorage.getItem("theme") as "dark" | "light" | null) ?? "dark"
-      setTheme(stored)
-      const root = document.documentElement
-      if (stored === "dark") {
-        root.classList.add("dark")
-      } else {
-        root.classList.remove("dark")
-      }
-    } catch {}
-  }, [])
+  useEffect(() => setMounted(true), [])
+  if (!mounted) return null
 
-  const toggle = React.useCallback(() => {
-    const next: "dark" | "light" = theme === "dark" ? "light" : "dark"
-    setTheme(next)
-    try {
-      localStorage.setItem("theme", next)
-      const root = document.documentElement
-      const logo = document.getElementById("change_logo") as HTMLImageElement | null;
-      
-      if (next === "dark") {
-        root.classList.add("dark")
-logo!.src  = "/images/Logo.png";
-      } else {
-        root.classList.remove("dark")
-          logo!.src = "/images/Logo_dark.png";
-      }
-    } catch {}
-  }, [theme])
+  const currentTheme = theme === "system" ? systemTheme : theme
+  const isDark = currentTheme === "dark"
 
-  const isDark = theme === "dark"
+  const toggleTheme = () => {
+    setTheme(isDark ? "light" : "dark")
+  }
 
   return (
     <Button
       variant="ghost"
       size="sm"
-      onClick={toggle}
-      aria-pressed={isDark ? "true" : "false"}
+      onClick={toggleTheme}
+      aria-pressed={isDark}
       aria-label="Toggle color theme"
       className="rounded-full px-3 py-2 border border-border/60 hover:bg-muted/60 transition"
     >

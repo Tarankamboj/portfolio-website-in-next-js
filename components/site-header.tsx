@@ -21,44 +21,26 @@ export default function SiteHeader() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
-  const { theme, setTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
-  const [currentTheme, setCurrentTheme] = useState(theme)
-
-  useEffect(() => setMounted(true), [])
-
-  const toggleTheme = useCallback(() => {
-    const nextTheme = theme === "dark" ? "light" : "dark"
-    setTheme(nextTheme)
-    setCurrentTheme(nextTheme)
-    try {
-      localStorage.setItem("theme", nextTheme)
-      const root = document.documentElement
-      if (nextTheme === "dark") root.classList.add("dark")
-      else root.classList.remove("dark")
-    } catch (err) {
-      console.error(err)
-    }
-  }, [theme, setTheme])
-
-  const logoSrc = mounted
-    ? currentTheme === "dark"
-      ? "/images/Logo.png"
-      : "/images/Logo_dark.png"
-    : "/images/Logo_dark.png" // fallback during SSR
+  const { theme, systemTheme } = useTheme()
+  
+  const currentTheme = theme === "system" ? systemTheme : theme
+  const logoSrc = currentTheme === "dark" ? "/images/Logo.png" : "/images/Logo_dark.png"
 
   return (
     <header className="sticky top-0 z-40 glass">
       <div className="mx-auto container px-4 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image
-          id="change_logo"
             src={logoSrc}
-            alt="Company logo "
-            width={120}
+            alt="Company logo"
+            width={120} 
             height={40}
-            className="h-10 w-auto"
+            className="h-10 w-auto transition-opacity duration-300"
           />
+
+
+
         </Link>
 
         <nav className="hidden md:flex items-center gap-2">
@@ -104,7 +86,7 @@ export default function SiteHeader() {
           <div className="mx-auto max-w-6xl px-4 py-4 grid gap-3">
             <div className="flex items-center justify-between">
               <span className="text-sm text-muted-foreground">Appearance</span>
-              <ThemeToggle/>
+              <ThemeToggle />
             </div>
             {nav.map((item) => {
               const active = pathname === item.href
