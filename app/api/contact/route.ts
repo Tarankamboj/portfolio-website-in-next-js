@@ -9,13 +9,13 @@ export async function POST(req: NextRequest) {
 
     // Create a transporter
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: Number(process.env.SMTP_PORT) === 465, // true for 465, false for other ports
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
+      host: 'smtp-relay.brevo.com',
+            port: 587,
+            secure: Number(587) === 465,
+            auth: {
+                user: "98fb7b001@smtp-brevo.com",
+                pass: "q3AIdSVyjL5UEPpZ",
+            },
     })
 
     console.log(phone)
