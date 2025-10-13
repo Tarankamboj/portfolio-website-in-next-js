@@ -22,12 +22,13 @@ export default function ContactForm() {
     e.preventDefault()
     setLoading(true)
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/contact2", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       })
       const data = await res.json()
+      
       if (!res.ok) throw new Error(data?.error || "Failed to send")
       toast({ title: "Message sent", description: "We’ll get back to you soon." })
       setForm({ name: "", email: "", phone: "", message: "" })

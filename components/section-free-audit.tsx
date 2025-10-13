@@ -21,12 +21,25 @@ export default function FreeAuditSection() {
     setLoading(true)
 
     try {
+      // const message = [
+      //   "Sellora Tech  || Goals point email",
+      //   `👤Name: ${name || "—"}`,
+      //   `✉️Email: ${email}`,
+      //   `💻Website: ${website}`,
+      //   `🎯Goals: ${goals || "—"}`,
+      // ].join("\n")
+
       const message = [
-        "Free Audit Request",
-        `Name: ${name || "—"}`,
-        `Email: ${email}`,
-        `Website: ${website}`,
-        `Goals: ${goals || "—"}`,
+        "🎯 Sellora Tech - Goals Point Submission",
+        "",
+        `👤 Name: ${name || "Not provided"}`,
+        `✉️ Email: ${email}`,
+        `🌐 Website: ${website || "Not provided"}`,
+        "",
+        "🎯 Goals:", goals || "No specific goals provided",
+        "",
+        "-------------------------",
+        "Sent from Goals Point contact form"
       ].join("\n")
 
       const res = await fetch("/api/contact", {
