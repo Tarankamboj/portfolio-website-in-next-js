@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { usePathname } from "next/navigation"
@@ -20,10 +20,22 @@ const nav = [
 export default function SiteHeader() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
-
   const [mounted, setMounted] = useState(false)
   const { theme, systemTheme } = useTheme()
-  
+
+  useEffect(() => setMounted(true), [])
+
+  // 🩶 Prevent rendering until we know the theme (avoids SSR mismatch)
+  if (!mounted) {
+    return (
+      <header className="sticky top-0 z-40 glass">
+        <div className="mx-auto container px-4 py-3 flex items-center justify-between">
+          <div className="h-10 w-[120px] bg-muted animate-pulse rounded-md" />
+        </div>
+      </header>
+    )
+  }
+
   const currentTheme = theme === "system" ? systemTheme : theme
   const logoSrc = currentTheme === "dark" ? "/images/Logo.png" : "/images/Logo_dark.png"
 
@@ -34,13 +46,11 @@ export default function SiteHeader() {
           <Image
             src={logoSrc}
             alt="Company logo"
-            width={120} 
+            width={120}
             height={40}
+            priority
             className="h-10 w-auto transition-opacity duration-300"
           />
-
-
-
         </Link>
 
         <nav className="hidden md:flex items-center gap-2">
