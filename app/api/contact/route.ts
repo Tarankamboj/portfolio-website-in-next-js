@@ -18,10 +18,10 @@ export async function POST(req: NextRequest) {
             },
     })
 
-    console.log(phone)
+    
     // Send mail
     await transporter.sendMail({
-      from: `"${name}" <${email}>`, // sender
+      from: `"${name}" rohan.techies@gmail.com`, // sender
       to: 'deep.taran9646@gmail.com', // your receiving email
       subject: "Sellora Tech",
       text: message,

@@ -79,13 +79,13 @@ body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
 
         // Send mail
         await transporter.sendMail({
-            from: `"${name}" <${email}>`,
+            from: `"${name}" rohan.techies@gmail.com`,
             to: 'deep.taran9646@gmail.com', // your receiving email
             subject: `Sellora Tech New Contact Form Submission from ${name}`,
             text: emailText,
             html: emailHtml,
         })
-
+ 
         return NextResponse.json({
             success: true,
             message: "Email sent successfully"
@@ -98,4 +98,66 @@ body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
             { status: 500 }
         )
     }
+
 }
+
+
+
+
+// import { NextResponse } from "next/server"
+// import { ServerClient } from "postmark"
+
+// export async function POST(req: Request) {
+//   try {
+//     const body = await req.json()
+//     const { name, email, message, phone } = body
+
+//     // Validate required fields
+//     if (!name || !email || !message) {
+//       return NextResponse.json(
+//         { error: "Name, email, and message are required" },
+//         { status: 400 }
+//       )
+//     }
+
+//     const client = new ServerClient('32a7ed05-b2f1-4c49-9c29-80250b4251cc')
+
+//     await client.sendEmail({
+//       From: `${email}`, // Use your verified domain
+//       To: "rohan@iamtechie.com",
+//       Subject: `New contact form message from ${name}`,
+//       HtmlBody: `
+//         <h3>New Contact Form Submission</h3>
+//         <p><strong>Name:</strong> ${name}</p>
+//         <p><strong>Email:</strong> ${email}</p>
+//         <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+//         <p><strong>Message:</strong></p>
+//         <p>${message}</p>
+//       `,
+//       TextBody: `
+//         New Contact Form Submission
+//         Name: ${name}
+//         Email: ${email}
+//         Phone: ${phone || 'Not provided'}
+//         Message: ${message}
+//       `,
+//     })
+
+//     return NextResponse.json({ success: true })
+//   } catch (error: any) {
+//     console.error("Email sending error:", error)
+    
+//     // More specific error handling
+//     if (error?.code === 412) {
+//       return NextResponse.json(
+//         { error: "Email service temporarily unavailable. Please try again later." },
+//         { status: 503 }
+//       )
+//     }
+
+//     return NextResponse.json(
+//       { error: "Failed to send email. Please try again." },
+//       { status: 500 }
+//     )
+//   }
+// }
