@@ -21,7 +21,7 @@ export default function SiteHeader() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
-  const { theme, systemTheme } = useTheme()
+  const { theme } = useTheme()
 
   useEffect(() => setMounted(true), [])
 
@@ -36,8 +36,7 @@ export default function SiteHeader() {
     )
   }
 
-  const currentTheme = theme === "system" ? systemTheme : theme
-  const logoSrc = currentTheme === "dark" ? "/images/Logo.png" : "/images/Logo_dark.png"
+  const logoSrc = "/new-logo.png"
 
   return (
     <header className="sticky top-0 z-40 glass">
@@ -49,7 +48,7 @@ export default function SiteHeader() {
             width={120}
             height={40}
             priority
-            className="h-10 w-auto transition-opacity duration-300"
+            className="h-15 w-auto transition-opacity duration-300"
           />
         </Link>
 

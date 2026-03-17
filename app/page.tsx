@@ -26,7 +26,7 @@ export default function HomePage() {
       {/* Stats */}
       <Stats />
       {/* Projects */}
-      <ProjectsGrid limit={3} />
+      <ProjectsGrid limit={4} />
       {/* Tech Stack */}
       <TechStack />
       {/* Industries */}

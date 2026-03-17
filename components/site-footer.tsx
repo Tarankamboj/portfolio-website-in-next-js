@@ -6,14 +6,13 @@ import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 
 export default function SiteFooter() {
-  const { theme, systemTheme } = useTheme()
+  const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => setMounted(true), [])
   if (!mounted) return null
 
-  const currentTheme = theme === "system" ? systemTheme : theme
-  const logoSrc = currentTheme === "dark" ? "/images/Logo.png" : "/images/Logo_dark.png"
+  const logoSrc = "/new-logo.png"
 
   return (
     <footer className="border-t border-border">
@@ -25,7 +24,7 @@ export default function SiteFooter() {
               alt="Company logo"
               width={120}
               height={40}
-              className="h-10 w-auto transition-opacity duration-300"
+              className="h-15 w-auto transition-opacity duration-300"
             />
           </div>
           <p className="text-sm text-muted-foreground">
@@ -56,10 +55,22 @@ export default function SiteFooter() {
         </div>
         <div>
           <h3 className="text-sm font-semibold mb-3">Contact</h3>
-          <ul className="text-sm text-muted-foreground grid gap-1">
-            <li>hello@brightstack.dev</li>
-            <li>+1 (555) 012-3456</li>
-            <li>San Francisco, CA</li>
+          <ul className="text-sm text-muted-foreground grid gap-2">
+            <li>
+              <a href="mailto:deep.taran9646@gmail.com" className="hover:text-primary">
+                deep.taran9646@gmail.com
+              </a>
+            </li>
+            <li>
+              <a href="https://www.linkedin.com/in/taran-deep-62b019211" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a href="https://www.upwork.com/freelancers/~01fc7bce3317d46bc6?mp_source=share" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                Upwork
+              </a>
+            </li>
           </ul>
         </div>
           </div>
