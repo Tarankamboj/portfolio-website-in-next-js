@@ -11,12 +11,15 @@ import Industries from "@/components/sections-industries"
 import Values from "@/components/sections-values"
 import Awards from "@/components/sections-awards"
 import FreeAuditSection from "@/components/section-free-audit"
+import CertificationSection from "@/components/sections-certification"
 
 export default function HomePage() {
   return (
     <>
       {/* Hero */}
       <Hero />
+      {/* Certification */}
+      <CertificationSection />
       {/* Free Audit */}
       <FreeAuditSection />
       {/* Services */}
@@ -33,6 +36,8 @@ export default function HomePage() {
       <Industries />
       {/* Values */}
       <Values />
+      {/* Awards */}
+      <Awards />
       {/* Awards */}
       <Awards />
       {/* Testimonials */}
