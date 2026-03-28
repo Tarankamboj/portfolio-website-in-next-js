@@ -137,7 +137,7 @@ export const projects: Project[] = [
     category: "Automotive E-Commerce",
     tags: ["Automotive", "Shopify", "Mega Menu"],
     description: "A high-performance e-commerce store for Altiq (formerly Supernova Lighting), Australia's leading automotive driving lights brand. The project centered on building a sophisticated mega menu navigation system that lets customers browse by product category with featured products, category links, and promotional imagery all visible at a glance.",
-    image: "/altiq.png",
+    image: "/altiq.jpeg",
     challenges: [
       { title: "Mega Menu", detail: "Engineered a fully custom multi-column mega menu with product thumbnails, category links, and featured highlight cards." },
       { title: "Product Discovery", detail: "Structured navigation to surface top SKUs like Rogue MK3, Quad V3, and Stealth Kits directly from the menu." },

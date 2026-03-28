@@ -1,7 +1,7 @@
 import ContactForm from "@/components/contact-form"
 
 export const metadata = {
-  title: "Contact — BrightStack IT",
+  title: "Contact — Taran IT",
 }
 
 export default function ContactPage() {

@@ -1,5 +1,5 @@
 export const metadata = {
-  title: "About — BrightStack IT",
+  title: "About — Taran",
 }
 
 export default function AboutPage() {
@@ -9,7 +9,7 @@ export default function AboutPage() {
         <div>
           <h1 className="text-3xl font-semibold">We build dependable software.</h1>
           <p className="text-muted-foreground mt-3">
-            BrightStack is a senior team specializing in product strategy, UX, and full‑stack delivery. We partner with
+            Taran is a senior specializing in product strategy, UX, and full‑stack delivery. We partner with
             founders and enterprises to ship quickly without sacrificing quality.
           </p>
           <ul className="text-sm grid gap-2 mt-4">

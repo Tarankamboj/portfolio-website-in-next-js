@@ -7,7 +7,7 @@ const testimonials = [
   {
     name: "Sofia Patel",
     role: "CTO, Nimbus Analytics",
-    quote: "BrightStack delivered our MVP in 8 weeks and it scaled to thousands of users with zero downtime.",
+    quote: "Taran delivered our MVP in 8 weeks and it scaled to thousands of users with zero downtime.",
   },
   {
     name: "Liam Chen",
