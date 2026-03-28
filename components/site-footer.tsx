@@ -78,7 +78,7 @@ export default function SiteFooter() {
 
 <div className="border-t border-border py-4">
         <p className="mx-auto container px-4 text-xs text-muted-foreground">
-          © {new Date().getFullYear()} BrightStack IT. All rights reserved.
+          © {new Date().getFullYear()} Taran. All rights reserved.
         </p>
       </div>
 
