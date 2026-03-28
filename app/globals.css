@@ -156,6 +156,15 @@
   }
 }
 
+/* Prevent tsparticles canvas from flashing white */
+#tsparticles canvas {
+  background: transparent !important;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
 .container {
     @media (width >= 96rem) {
         max-width: 86rem !important;

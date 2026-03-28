@@ -12,6 +12,7 @@ import Values from "@/components/sections-values"
 import Awards from "@/components/sections-awards"
 import FreeAuditSection from "@/components/section-free-audit"
 import CertificationSection from "@/components/sections-certification"
+import MidPageBanner from "@/components/sections-midpage-banner"
 
 export default function HomePage() {
   return (
@@ -20,6 +21,8 @@ export default function HomePage() {
       <Hero />
       {/* Certification */}
       <CertificationSection />
+      {/* Mid-page banner */}
+      <MidPageBanner />
       {/* Free Audit */}
       <FreeAuditSection />
       {/* Services */}
@@ -36,8 +39,6 @@ export default function HomePage() {
       <Industries />
       {/* Values */}
       <Values />
-      {/* Awards */}
-      <Awards />
       {/* Awards */}
       <Awards />
       {/* Testimonials */}
