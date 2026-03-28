@@ -25,7 +25,7 @@ export default function Stats() {
   const isInView = useInView(ref, { once: true, amount: 0.3 }) // triggers when 30% visible
 
   return (
-    <section ref={ref} className="mx-auto container px-4 pb-4">
+    <section ref={ref} className="mx-auto container px-4 py-14">
       <div className="grid gap-4 md:grid-cols-4">
         {stats.map((s, index) => (
           <motion.div

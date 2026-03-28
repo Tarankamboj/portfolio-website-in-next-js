@@ -70,7 +70,7 @@ const bentoItems = [
 
 export default function MidPageBanner() {
   return (
-    <section className="mx-auto container px-4 py-20 space-y-16">
+    <section className="mx-auto container px-4 py-14 space-y-16">
 
       {/* Animated stats row */}
       <motion.div

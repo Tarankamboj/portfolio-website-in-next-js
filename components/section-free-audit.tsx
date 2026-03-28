@@ -63,7 +63,7 @@ export default function FreeAuditSection() {
   }
 
   return (
-    <section aria-labelledby="free-audit-heading" className="relative py-12 md:py-20 overflow-hidden">
+    <section aria-labelledby="free-audit-heading" className="relative py-14 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid gap-8 md:grid-cols-2 md:gap-10 items-stretch">
 

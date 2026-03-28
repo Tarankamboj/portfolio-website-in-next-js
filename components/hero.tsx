@@ -45,7 +45,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute -top-32 -left-32 w-[500px] h-[500px] rounded-full bg-primary/10 blur-[120px]" />
       <div className="pointer-events-none absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full bg-primary/8 blur-[100px]" />
 
-      <div className="container mx-auto px-4 py-20 md:py-28 grid gap-10 md:grid-cols-2 items-center relative z-10">
+      <div className="container mx-auto px-4 py-14 md:py-20 grid gap-10 md:grid-cols-2 items-center relative z-10">
         {/* Text */}
         <motion.div
           className="space-y-6"

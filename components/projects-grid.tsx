@@ -20,7 +20,7 @@ export default function ProjectsGrid({ limit }: { limit?: number }) {
   const isGrid = typeof limit === "number"
 
   return (
-    <section className="mx-auto container px-4 py-4">
+    <section className="mx-auto container px-4 py-14">
       {isGrid && (
         <div className="flex items-end justify-between mb-6">
           <div>
