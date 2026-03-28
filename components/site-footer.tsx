@@ -28,7 +28,7 @@ export default function SiteFooter() {
             />
           </div>
           <p className="text-sm text-muted-foreground">
-            We design, build, and scale reliable software for ambitious teams.
+            We design, build, and scale reliable software for ambitious.
           </p>
         </div>
         {/* Other columns remain unchanged */}

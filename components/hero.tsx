@@ -41,7 +41,7 @@
               </Link>
             </div>
             <ul className="text-sm text-muted-foreground grid gap-1 pt-2">
-              <li>• Senior engineering team</li>
+              <li>• Senior engineering</li>
               <li>• Transparent delivery</li>
               <li>• Results you can measure</li>
             </ul>
